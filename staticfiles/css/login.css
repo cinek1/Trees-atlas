@@ -1,0 +1,64 @@
+html,
+body {
+    background-image: url("{% static 'img/background.jpg' %}");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    top: 20%;
+    height: 500px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.4);
+
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+label,
+input {
+    display: block;
+    width: 250px;
+    top: 5%;
+    font-weight: bold;
+
+}
+
+
+span.helptext {
+    display: none;
+}
+.btn-group button {
+    background-color: #4CAF50; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float:right;  /* Float the buttons side by side */
+    height: 60px;
+  }
+  
+  .btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+  
+  /* Clear floats (clearfix hack) */
+  .btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  /* Add a background color on hover */
+  .btn-group button:hover {
+    background-color: #3e8e41;
+  }

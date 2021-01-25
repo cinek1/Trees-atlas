@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+
+  <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  <style>
+    .button {
+      background-color: #4CAF50;
+      /* Green */
+      border: none;
+      color: rgb(196, 4, 4);
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<div class="container-fluid">
+  <div class="px-lg-5">
+
+    <body>
+      <form action='{% url "add_picture" %}' method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+      </form>
+    </body>
+    <div class="row justify-content-around">
+
+      <body>
+        {% for leaf in Leafs %}
+        <div class="col-xl-5 col-lg-4 col-md-6 mb-4">
+
+          <div class="bg-white rounded shadow-sm"><img src="{{ leaf.leaf_image_url.url }}" alt=""
+              class="img-fluid card-img-top" style="height: 600px">
+            <div class="p-4">
+              <div class="desc">
+                {% if leaf.analyze %}
+                <h5> <a href="#" class="text-dark"> </a>Name: {{ leaf.name }}, Predicted: {{ leaf.prediction }}% </a>
+                </h5>
+                <div class="btn-group">
+                  <form action='{% url "tree_summary" %}' method='POST'>
+                  <button  value="{{ leaf.name }}" name="mytextbox" type='submit' >Info</button>
+                </form>
+                <form action='{% url "delete_picture" %}' method='POST'>
+                  <button class="button" value="{{leaf.leaf_image_url}}" name="url" type='submit'>Delete</button>
+                </form>
+                </div>
+                {% else %}
+                <div class="btn-group">
+                <form action='{% url "analyze_picture" %}' method='POST'>
+                  <button class="button" value="{{leaf.leaf_image_url}}" name="url" type='submit'>Analyze</button>
+                </form>
+                  <form action='{% url "delete_picture" %}' method='POST'>
+                    <button class="button" value="{{leaf.leaf_image_url}}" name="url" type='submit'>Delete</button>
+                  </form>
+                </div>
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+  </body>
+  {% endblock content %}

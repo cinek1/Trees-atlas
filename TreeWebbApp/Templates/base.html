@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title> Trees Atlas</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}"/>
+
+    <title>Sided Bootstrap 4 Theme</title>
+
+  </head>
+
+  <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" >Trees atlas </a>
+  {% if not user.is_authenticated %}
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'info_tree' %}">Avaible trees</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="accounts/login/">Login</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+    </ul>
+  </div>
+  {% else %}
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'your_trees' %}">Your Trees</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'info_tree' %}">Avaible Trees</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}?next=/index">Logout</a>
+      </li>
+    </ul>
+  </div>
+  {% endif %}
+</nav>
+    {% block content %}{% endblock content %}
+  </body>
+</html>

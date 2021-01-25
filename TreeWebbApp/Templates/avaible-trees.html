@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+  <div class="px-lg-5">
+    <div class="row justify-content-around">
+      {% for tree in Trees %}
+      <div class="col-xl-5 col-lg-4 col-md-6 mb-4">
+        <form action='{% url "tree_summary" %}' method='POST'>
+          <button value="{{ tree.name }}" name="mytextbox" type='submit'>
+        </form>
+          <div class="bg-white rounded shadow-sm"><img src="{{ tree.tree_image_url.url }}" alt=""
+              class="img-fluid card-img-top" style="height: 600px">
+            <div class="p-4">
+              <div class="desc">
+                <h5> <a href="#" class="text-dark"> </a>{{ tree.name }}
+        </a></h5>
+   
+      </div>
+    </div>
+  </div>
+</button>
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock content %}

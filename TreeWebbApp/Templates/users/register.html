@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<html>
+<head>
+    <style>
+        html,
+        body {
+            background-image: url("{% static 'img/background.jpg' %}");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            top: 20%;
+            height: 500px;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.4);
+
+        }
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        label,
+        input {
+            display: block;
+            width: 250px;
+            top: 5%;
+            font-weight: bold;
+
+        }
+
+
+        span.helptext {
+            display: none;
+        }
+    </style>
+</head>
+<h2>Register</h2>
+<div class="container">
+    <div class="center">
+        <form method="post">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</div>
+{% endblock %}

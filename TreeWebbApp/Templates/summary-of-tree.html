@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  .starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+</style>
+<div class="container">
+  <div class="starter-template">
+    <h1>{{ tree.name }}</h1>
+    <p class="lead">{{ content }}
+      <a href="{{ tree.url }}"> Read more <br> </a>
+    </p>
+    <img class="col-lg-3 img-responsive" src="{{ tree.leaf_image_url.url }}">
+    <img class="col-lg-3 img-responsive" src="{{ tree.tree_image_url.url }}">
+  </div>
+
+</div>
+{% endblock content %}
